@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="ComandaUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ComandaUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ComandaUWP.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:PedidoViewModel/>
+    </Page.DataContext>
+        
+    <Grid>
+        <ListView 
+            x:Name="PedidosListView"
+            ItemsSource="{Binding Path=Pedidos}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel 
+                        Margin="0, 10, 10, 0">
+                        <TextBlock 
+                            Text="{Binding NumeroPedido}" 
+                            FontSize="20"/>
+                        <TextBlock
+                            Text="{Binding Path=PrecoTotal}"
+                            FontSize="20"/>
+                        <TextBlock
+                            Text="{Binding Path=FormaPgto}"
+                            FontSize="20"/>
+                        <TextBlock
+                            Text="{Binding Path=NomeCliente}"
+                            FontSize="20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
